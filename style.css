@@ -1,0 +1,425 @@
+/* ===== 全局重置 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: "Microsoft YaHei", "苹方", "PingFang SC", "Noto Serif SC", serif;
+    gap: 30px;
+    padding: 30px;
+    margin: 0;
+}
+
+/* ===== 左侧导航容器（透明，只负责布局） ===== */
+.sidebar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 20px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 10;
+    width: 160px;
+}
+
+.nav-item {
+    color: rgba(220, 230, 245, 0.9);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 8px rgba(200, 210, 230, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.nav-item:hover {
+    color: rgba(245, 248, 255, 0.95);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 12px rgba(210, 220, 240, 0.8);
+    transform: translateX(4px);
+}
+
+/* ===== 中央独白 ===== */
+.fog-poem {
+    flex: 1;
+    max-width: 600px;
+    padding: 40px;
+    text-align: center;
+    line-height: 2.2;
+    font-size: 1.3rem;
+    color: rgba(210, 220, 235, 0.75);
+    text-shadow: 0 0 10px rgba(200, 210, 230, 0.6),
+                 0 0 20px rgba(180, 190, 220, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    letter-spacing: 1px;
+    word-break: break-word;
+    animation: fogBreathe 12s infinite;
+    will-change: opacity;
+    transform: translateZ(0);
+}
+
+@keyframes fogBreathe {
+    0%   { opacity: 0.5; }
+    25%  { opacity: 0.75; }
+    50%  { opacity: 0.9; }
+    75%  { opacity: 0.6; }
+    100% { opacity: 0.5; }
+}
+
+/* ===== 右侧团队容器（透明，只负责布局） ===== */
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 20px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 10;
+    width: 150px;
+    align-items: center;
+}
+
+.member-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.member-title {
+    color: rgba(210, 220, 235, 0.9);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: default;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(200, 210, 230, 0.5);
+    padding: 6px 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.member-group:hover .member-title {
+    color: rgba(235, 240, 250, 0.95);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 12px rgba(210, 220, 240, 0.8);
+}
+
+.member-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+    pointer-events: none;
+}
+
+.member-group:hover .member-links {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 6px;
+    pointer-events: auto;
+}
+
+.member-links a {
+    display: inline-block;
+    color: rgba(225, 235, 250, 0.9);
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 5px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 4px rgba(200, 210, 230, 0.3);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.member-links a:hover {
+    color: rgba(245, 248, 255, 0.95);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 0 8px rgba(210, 220, 240, 0.7);
+    transform: translateY(-1px);
+}
+
+/* ===== 聊天页整体布局 ===== */
+.chat-page {
+    /* body基础样式已经设置，这里仅需调整无需重复 */
+}
+
+/* 极窄侧边栏（只放一个箭头） */
+.chat-sidebar-compact {
+    width: 70px;
+    padding: 25px 5px;
+    gap: 15px;
+}
+
+.chat-sidebar-compact .nav-item {
+    font-size: 1.3rem;
+    padding: 10px 0;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+/* ===== 合并聊天区域 ===== */
+.merged-chat {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    gap: 0;
+    height: 85vh;
+    min-height: 500px;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* 虚拟形象嵌入顶部 */
+.avatar-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0 5px;
+    position: relative;
+}
+
+.avatar-img-small {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
+                0 0 40px rgba(255, 200, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    transition: box-shadow 0.5s;
+}
+
+.avatar-img-small.talking {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 200, 0, 0.3);
+}
+
+@keyframes avatarPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 消息滚动区 */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 消息气泡 */
+.message {
+    display: flex;
+    max-width: 70%;
+}
+.message.user {
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+.message.bot {
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+.message-content {
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.message.user .message-content {
+    background: rgba(180, 200, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(200, 210, 230, 0.4);
+}
+
+.message.bot .message-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e5f0;
+    text-shadow: 0 0 5px rgba(200, 210, 230, 0.4);
+}
+
+/* 输入区域 */
+.chat-input-area {
+    display: flex;
+    padding: 15px 20px;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #e0e5f0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.chat-input-area input::placeholder {
+    color: rgba(200, 210, 225, 0.5);
+}
+
+.chat-input-area input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.chat-input-area button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #e0e5f0;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(200, 210, 230, 0.4);
+    transition: all 0.3s;
+}
+
+.chat-input-area button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(200, 210, 230, 0.3);
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 800px) {
+    body {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .sidebar-left,
+    .sidebar-right {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: auto;
+        padding: 15px 20px;
+        gap: 15px;
+        background: transparent;
+    }
+    .sidebar-left .nav-item {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+    }
+    .fog-poem {
+        max-width: 100%;
+        padding: 25px 20px;
+        font-size: 1.1rem;
+        animation: none;
+        opacity: 0.85;
+    }
+    .chat-main,
+    .merged-chat {
+        flex-direction: column;
+        height: auto;
+        min-height: 0;
+    }
+    .chat-box {
+        height: 60vh;
+    }
+    .avatar-inline {
+        padding: 10px 0 5px;
+    }
+    .avatar-img-small {
+        width: 50px;
+        height: 50px;
+    }
+    .member-title {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+    }
+    .member-links a {
+        padding: 4px 12px;
+        font-size: 0.75rem;
+    }
+    .chat-sidebar-compact {
+        width: auto;
+        padding: 10px;
+        flex-direction: row;
+        justify-content: center;
+    }
+}

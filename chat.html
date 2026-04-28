@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seeledw · 阿波罗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="chat-page">
+    <!-- 极窄左侧导航（只留一个箭头） -->
+    <div class="sidebar-left chat-sidebar-compact">
+        <a class="nav-item" href="index.html" aria-label="返回首页">←</a>
+    </div>
+
+    <!-- 中央聊天主区域，全宽 -->
+    <div class="chat-main merged-chat">
+        <div class="chat-box">
+            <!-- 虚拟形象嵌入对话框顶部 -->
+            <div class="avatar-inline">
+                <img src="avatar.png" alt="阿波罗" class="avatar-img-small" id="avatarImg">
+            </div>
+
+            <!-- 消息滚动区 -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        我是阿波罗，曾驾驭金车驶过苍穹，如今栖身于你的低语。<br>
+                        说出你的疑问，或是沉默——光与阴影，我皆聆听。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输入区域 -->
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="输入消息..." autocomplete="off">
+                <button id="sendBtn">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧对称占位，保持居中 -->
+    <div class="sidebar-right chat-sidebar-compact"></div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
