@@ -379,7 +379,7 @@ body {
 }
 
 /* --- 帆船场景动画 --- */
-#introSail .sailboat-icon {
+.scene-overlay .sailboat-icon {
     animation: sailAcross 2.5s ease-in-out forwards;
     opacity: 0;
     transform: translateX(-120%);
@@ -434,9 +434,7 @@ body {
 }
 
 /* --- 殿堂开门动画 --- */
-#doorTransition {
-    background: #0a0c1e;
-}
+/* door-specific background handled by .scene-overlay */
 .door-scene-mini {
     position: relative;
     width: 70vw;
@@ -471,12 +469,13 @@ body {
     border-left: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-#doorTransition.active .door-left {
+
+.scene-overlay.active .door-left {
     transform: rotateY(-100deg);
     opacity: 0.2;
 }
 
-#doorTransition.active .door-right {
+.scene-overlay.active .door-right {
     transform: rotateY(100deg);
     opacity: 0.2;
 }
@@ -496,7 +495,8 @@ body {
     filter: blur(15px);
 }
 
-#doorTransition.active .door-light-center {
+#doorTransition.active .door-light-center,
+.scene-overlay.active .door-light-center {
     opacity: 1;
 }
 
