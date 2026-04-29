@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>seeledw</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- 左侧功能入口 -->
@@ -51,5 +51,34 @@
             </div>
         </div>
     </div>
+<!-- ===== 全局转场系统 ===== -->
+<!-- 帆船远航 -->
+<div id="introSail" class="scene-overlay">
+    <div class="scene-content">
+        <svg class="sailboat-icon" viewBox="0 0 120 140" width="150" height="175">
+            <polygon points="10,110 110,110 90,130 30,130" fill="#4a3a2a" />
+            <rect x="58" y="10" width="4" height="100" fill="#3a2a1a" />
+            <polygon points="62,20 105,80 62,80" fill="rgba(220,230,245,0.75)" />
+            <polygon points="58,25 20,75 58,75" fill="rgba(200,215,235,0.65)" />
+        </svg>
+        <div class="wave-group">
+            <div class="wave-line w1"></div>
+            <div class="wave-line w2"></div>
+            <div class="wave-line w3"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 殿堂开门 -->
+<div id="doorTransition" class="scene-overlay">
+    <div class="door-scene-mini">
+        <div class="door-mini door-left"></div>
+        <div class="door-mini door-right"></div>
+        <div class="door-light-center"></div>
+    </div>
+</div>
+
+<script src="js/sceneManager.js"></script>
+<script src="js/bgm.js"></script>
 </body>
 </html>
