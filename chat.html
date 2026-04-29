@@ -18,6 +18,7 @@
             <!-- 虚拟形象嵌入对话框顶部 -->
             <div class="avatar-inline">
                 <img src="assets/images/avatar.png" alt="阿波罗" class="avatar-img-small" id="avatarImg">
+            </div>  <!-- ← 这个闭合标签之前漏掉了 -->
 
             <!-- 消息滚动区 -->
             <div class="chat-messages" id="chatMessages">
@@ -34,39 +35,39 @@
                 <input type="text" id="userInput" placeholder="输入消息..." autocomplete="off">
                 <button id="sendBtn">发送</button>
             </div>
-        </div>
-    </div>
+        </div><!-- .chat-box 结束 -->
+    </div><!-- .merged-chat 结束 -->
 
     <!-- 右侧对称占位，保持居中 -->
     <div class="sidebar-right chat-sidebar-compact"></div>
 
-    <script src="chat.js"></script>
-<!-- ===== 全局转场系统 ===== -->
-<div id="introSail" class="scene-overlay">
-    <div class="scene-content">
-        <svg class="sailboat-icon" viewBox="0 0 120 140" width="150" height="175">
-            <polygon points="10,110 110,110 90,130 30,130" fill="#4a3a2a" />
-            <rect x="58" y="10" width="4" height="100" fill="#3a2a1a" />
-            <polygon points="62,20 105,80 62,80" fill="rgba(220,230,245,0.75)" />
-            <polygon points="58,25 20,75 58,75" fill="rgba(200,215,235,0.65)" />
-        </svg>
-        <div class="wave-group">
-            <div class="wave-line w1"></div>
-            <div class="wave-line w2"></div>
-            <div class="wave-line w3"></div>
+    <!-- ===== 全局转场系统 ===== -->
+    <div id="introSail" class="scene-overlay">
+        <div class="scene-content">
+            <svg class="sailboat-icon" viewBox="0 0 120 140" width="150" height="175">
+                <polygon points="10,110 110,110 90,130 30,130" fill="#4a3a2a" />
+                <rect x="58" y="10" width="4" height="100" fill="#3a2a1a" />
+                <polygon points="62,20 105,80 62,80" fill="rgba(220,230,245,0.75)" />
+                <polygon points="58,25 20,75 58,75" fill="rgba(200,215,235,0.65)" />
+            </svg>
+            <div class="wave-group">
+                <div class="wave-line w1"></div>
+                <div class="wave-line w2"></div>
+                <div class="wave-line w3"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="doorTransition" class="scene-overlay">
-    <div class="door-scene-mini">
-        <div class="door-mini door-left"></div>
-        <div class="door-mini door-right"></div>
-        <div class="door-light-center"></div>
+    <div id="doorTransition" class="scene-overlay">
+        <div class="door-scene-mini">
+            <div class="door-mini door-left"></div>
+            <div class="door-mini door-right"></div>
+            <div class="door-light-center"></div>
+        </div>
     </div>
-</div>
 
-<script src="js/sceneManager.js"></script>
-<script src="js/bgm.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/sceneManager.js"></script>
+    <script src="js/bgm.js"></script>
 </body>
 </html>
